@@ -1,0 +1,14 @@
+import express from 'express';
+
+const app = express()
+app.use(express.json())
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+})
+
+app.get('/api/planets', (req, res)=>{
+    const data ={name: 'test'}
+    res.status(200).send(data);
+})
