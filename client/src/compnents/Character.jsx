@@ -13,7 +13,6 @@ const Character = ({films}) => {
 
     useEffect(() => { 
         fetchCharacter(id) 
-        //fetchFilm(id)
     }, [])
 
     useEffect(() => { 
@@ -22,26 +21,34 @@ const Character = ({films}) => {
         }
     }, [character])
 
+    useEffect(()=>{
+        if(!films) return;
+        fetchFilm(id)
+    },[films])
+
 
 
 
     async function fetchCharacter(id) {
-        let response = await fetch(`http://localhost:3000/api/characters/${id}`)
+        const response = await fetch(`http://localhost:3000/api/characters/${id}`)
         const data = await response.json()
         setCharacter(data)
     }
 
     async function fetchPlanet(id) {
-        let response = await fetch(`http://localhost:3000/api/planets/${id}`)
+        const response = await fetch(`http://localhost:3000/api/planets/${id}`)
         const data = await response.json()
         setPlanet(data)
     }
 
     async function fetchFilm(id) {
-        let response = await fetch(`http://localhost:3000/api/characters/${id}/films`)
+        const response = await fetch(`http://localhost:3000/api/characters/${id}/films`)
         const data = await response.json()
-        const filteredFilms = films?.filter(item => item.id !== data.film_id)
-
+        let filteredFilms =[];
+        for(let item of data){
+            const found = films.find(film => film.id === item.film_id)
+            filteredFilms.push(found)
+        }
         setCharacterFilms(filteredFilms)
     }
 
@@ -61,7 +68,7 @@ const Character = ({films}) => {
                 <h2>Films appeared in</h2>
                 <div>
                     {characterFilms?.map(
-                        item => <div>{item.name}</div>
+                        film => <div key={film.id}>{film?.title}</div>
                     )}
                 </div>
             </section>
