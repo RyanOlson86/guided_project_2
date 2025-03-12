@@ -5,7 +5,7 @@ function Home({characters}) {
     return (
         <>
         <h1>Choose a Character</h1>
-        <div className="characters-flex-container">
+        <div className="grid-container">
             {characters?.map(character =>
                 <div  className="character-tile" key={character.id} onClick={() => navigate(`/characters/${character.id}`)}>{character.name}</div>
             )}

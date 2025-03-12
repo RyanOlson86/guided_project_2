@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route,  } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
 import './App.css'
 import Home from './Home'
 import Character from './compnents/Character';
 import Films from './compnents/Films';
 import Planets from './compnents/Planets';
+import Header from './compnents/Header';
 
 
 function App() {
@@ -38,6 +39,8 @@ function App() {
 
   return (
     <Router>
+      <Header />
+      <hr></hr>
       <Routes>
         <Route exact path="/" element={<Home characters={characters} />} />
         <Route  path="/characters/:id" element={<Character films={films} />} />

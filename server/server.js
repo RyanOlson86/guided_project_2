@@ -46,7 +46,7 @@ app.get('/api/characters', async (req, res)=>{
         const client = await MongoClient.connect(url)
         const db = client.db(dbName)
         const collection = db.collection('characters')
-        const characters = await collection.find({}).toArray();
+        const characters = await collection.find().sort({name: 1}).toArray();
         res.json(characters)
     } catch (err) {
         console.error("Error: ", err);

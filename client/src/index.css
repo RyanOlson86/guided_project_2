@@ -13,25 +13,4 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.character-tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 8px;
-  cursor: pointer;
-}
 
-.characters-flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.left-flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-}
