@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from 'react'
 
 
-const Character = ({films}) => {
+const Character = ({ films }) => {
 
     const params = useParams()
     const id = params.id
@@ -12,20 +12,20 @@ const Character = ({films}) => {
     const [planet, setPlanet] = useState(null)
     const [characterFilms, setCharacterFilms] = useState([])
 
-    useEffect(() => { 
-        fetchCharacter(id) 
+    useEffect(() => {
+        fetchCharacter(id)
     }, [])
 
-    useEffect(() => { 
-        if(character?.homeworld){
-            fetchPlanet(character.homeworld) 
+    useEffect(() => {
+        if (character?.homeworld) {
+            fetchPlanet(character.homeworld)
         }
     }, [character])
 
-    useEffect(()=>{
-        if(!films) return;
+    useEffect(() => {
+        if (!films) return;
         fetchFilm(id)
-    },[films])
+    }, [films])
 
 
 
@@ -45,8 +45,8 @@ const Character = ({films}) => {
     async function fetchFilm(id) {
         const response = await fetch(`http://localhost:3000/api/characters/${id}/films`)
         const data = await response.json()
-        let filteredFilms =[];
-        for(let item of data){
+        let filteredFilms = [];
+        for (let item of data) {
             const found = films.find(film => film.id === item.film_id)
             filteredFilms.push(found)
         }
@@ -55,7 +55,7 @@ const Character = ({films}) => {
 
     return (
         <>
-            <h1 id="name"></h1>
+            <h1 id="name">{character?.name}</h1>
             <section id="generalInfo">
                 <div>Height: <span id="height">{character?.height}</span> cm</div>
                 <div>Mass: <span id="mass">{character?.mass}</span> kg</div>
@@ -63,11 +63,13 @@ const Character = ({films}) => {
             </section>
             <section id="planets">
                 <h2>Homeworld</h2>
-                <p className="character-tile" onClick={() => navigate(`/planets/${planet.id}`)}><span id="homeworld">{planet?.name}</span></p>
+                <div className="left-flex-container">
+                    <p className="character-tile" onClick={() => navigate(`/planets/${planet.id}`)}><span id="homeworld">{planet?.name}</span></p>
+                </div>
             </section>
             <section id="films">
                 <h2>Films appeared in</h2>
-                <div className="characters-flex-container">
+                <div className="left-flex-container">
                     {characterFilms?.map(
                         film => <div className="character-tile" key={film.id} onClick={() => navigate(`/films/${film.id}`)}>{film?.title}</div>
                     )}

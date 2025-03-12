@@ -40,9 +40,9 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Home characters={characters} />} />
-        <Route exact path="/character/:id" element={<Character films={films} />} />
-        <Route exact path="/films/:id" element={<Films characters={characters} planets={planets} />} />
-        <Route exact path="/planets/:id" element={<Planets films={films}/>} />
+        <Route  path="/characters/:id" element={<Character films={films} />} />
+        <Route  path="/films/:id" element={<Films characters={characters} planets={planets} />} />
+        <Route  path="/planets/:id" element={<Planets films={films}/>} />
       </Routes>
     </Router>
   )
