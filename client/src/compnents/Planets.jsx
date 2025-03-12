@@ -47,21 +47,21 @@ function Planets({ films }) {
     }, [films])
 
     return (
-        <div>
+        <div className="info-container">
             <h1 id="name">{planet?.name}</h1>
             <section id="generalInfo">
-                <p>Climate: <span id="climate">{planet?.climate}</span></p>
-                <p>Surface Water: <span id="surface_water">{planet?.surface_water}</span></p>
-                <p>Diameter: <span id="diameter">{planet?.diameter}</span></p>
-                <p>Rotation Period: <span id="rotation_period">{planet?.rotation_period}</span></p>
-                <p>Terrain: <span id="terrain">{planet?.terrain}</span></p>
-                <p>Gravity: <span id="gravity">{planet?.gravity}</span></p>
-                <p>Orbital Period: <span id="orbital_period">{planet?.orbital_period}</span></p>
-                <p>Population: <span id="population">{planet?.population}</span></p>
+                <div className="attribute">Climate: {planet?.climate}</div>
+                <div className="attribute">Surface Water: {planet?.surface_water}</div>
+                <div className="attribute">Diameter: {planet?.diameter}</div>
+                <div className="attribute">Rotation Period: {planet?.rotation_period}</div>
+                <div className="attribute" >Terrain: {planet?.terrain}</div>
+                <div className="attribute">Gravity: {planet?.gravity}</div>
+                <div className="attribute">Orbital Period: {planet?.orbital_period}</div>
+                <div className="attribute">Population: {planet?.population}</div>
             </section>
             <section id="characters">
                 <h2>Characters:</h2>
-                <div className="characters-flex-container">
+                <div className="grid-container" >
                     {character?.map(
                         char => <div className="character-tile" key={char.id} onClick={() => navigate(`/characters/${char.id}`)}>{char?.name}</div>
                     )}
@@ -69,7 +69,7 @@ function Planets({ films }) {
             </section>
             <section id="films">
                 <h2>Planets:</h2>
-                <div className="characters-flex-container">
+                <div className="grid-container" >
                     {planetFilms?.map(
                         film => <div className="character-tile" key={film.id} onClick={() => navigate(`/films/${film.id}`)}>{film?.title}</div>
                     )}

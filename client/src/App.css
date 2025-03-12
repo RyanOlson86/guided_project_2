@@ -2,7 +2,6 @@
   max-width: 1280px;
   /* margin: 0 auto; */
   padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -46,7 +45,7 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 18px;
 }
 
@@ -71,4 +70,26 @@
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#generalInfo{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.attribute{
+  background-color: #d9d9d9;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+section{
+  width: 100%;
 }

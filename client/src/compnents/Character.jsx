@@ -54,28 +54,28 @@ const Character = ({ films }) => {
     }
 
     return (
-        <>
+        <div className="info-container">
             <h1 id="name">{character?.name}</h1>
             <section id="generalInfo">
-                <div>Height: <span id="height">{character?.height}</span> cm</div>
-                <div>Mass: <span id="mass">{character?.mass}</span> kg</div>
-                <div>Born: <span id="birth_year">{character?.birth_year}</span></div>
+                <div className="attribute">Height: <span id="height">{character?.height}</span> cm</div>
+                <div className="attribute">Mass: <span id="mass">{character?.mass}</span> kg</div>
+                <div className="attribute">Born: <span id="birth_year">{character?.birth_year}</span></div>
             </section>
             <section id="planets">
                 <h2>Homeworld</h2>
-                <div className="left-flex-container">
+                <div className="grid-container" >
                     <p className="character-tile" onClick={() => navigate(`/planets/${planet.id}`)}><span id="homeworld">{planet?.name}</span></p>
                 </div>
             </section>
             <section id="films">
                 <h2>Films appeared in</h2>
-                <div className="left-flex-container">
+                <div className="grid-container" >
                     {characterFilms?.map(
                         film => <div className="character-tile" key={film.id} onClick={() => navigate(`/films/${film.id}`)}>{film?.title}</div>
                     )}
                 </div>
             </section>
-        </>
+        </div>
     )
 }
 

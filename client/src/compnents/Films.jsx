@@ -66,16 +66,16 @@ function Films({ characters, planets }) {
 
 
     return (
-        <>
+        <div className="info-container">
             <h1 id="name">{film?.title}</h1>
             <section id="generalInfo">
-                <div>Director: {film?.director}</div>
-                <div>{`Producer(s): `+ film?.producer}</div>
-                <div>Release Date: {film?.release_date}</div>
+                <div className="attribute">Director: {film?.director}</div>
+                <div className="attribute">{`Producer(s): `+ film?.producer}</div>
+                <div className="attribute">Release Date: {film?.release_date}</div>
             </section>
             <section id="planets">
                 <h2>Planets</h2>
-                <div className="left-flex-container">
+                <div className="grid-container" >
                     {planetsInFilm?.map(
                         planet => <div className="character-tile" key={planet.id} onClick={() => navigate(`/planets/${planet.id}`)}>{planet?.name}</div>
                     )}
@@ -83,13 +83,13 @@ function Films({ characters, planets }) {
             </section>
             <section id="characters">
                 <h2>Characters in Film</h2>
-                <div className="left-flex-container">
+                <div className="grid-container" >
                     {characterForFilm?.map(
                         char => <div className="character-tile" key={char.id} onClick={() => navigate(`/characters/${char.id}`)}>{char?.name}</div>
                     )}
                 </div>
             </section>
-        </>
+        </div>
     )
 }
 
