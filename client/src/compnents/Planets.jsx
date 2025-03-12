@@ -64,7 +64,7 @@ function Planets({ films }) {
                 <h2>Characters:</h2>
                 <div className="characters-flex-container">
                     {character?.map(
-                        char => <div className="character-tile" key={char.id} onClick={() => navigate(`/character/${char.id}`)}>{char?.name}</div>
+                        char => <div className="character-tile" key={char.id} onClick={() => navigate(`/characters/${char.id}`)}>{char?.name}</div>
                     )}
                 </div>
             </section>
