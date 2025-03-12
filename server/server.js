@@ -21,7 +21,6 @@ app.get('/api/planets', async (req, res)=>{
         const db = client.db(dbName)
         const collection = db.collection('planets')
         const planets = await collection.find({}).toArray();
-        console.log(planets)
         res.json(planets)
     } catch (err) {
         console.error("Error: ", err);

@@ -5,51 +5,50 @@ import { useParams, useNavigate } from 'react-router-dom'
 function Planets({ films }) {
 
     const navigate = useNavigate()
-
     const id = useParams().id
+
     const [planet, setPlanet] = useState(null)
     const [character, setCharacter] = useState(null)
     const [planetFilms, setPlanetFilms] = useState(null)
 
-    async function fetchPlanet (id) {
+    async function fetchPlanet () {
         const response = await fetch(`http://localhost:3000/api/planets/${id}`)
         const data = await response.json()
         setPlanet(data)
     }
 
-    async function fetchCharacter (id) {
+    async function fetchCharacter () {
         const response = await fetch(`http://localhost:3000/api/planets/${id}/characters`)
         const data = await response.json()
+        console.log(data);
         setCharacter(data)       
     }
 
-    async function fetchFilms(id) {
+    async function fetchFilms() {
         const response = await fetch(`http://localhost:3000/api/planets/${id}/films`)
         const data = await response.json()
-        console.log(data)
         let filteredFilms = [];
         for(let item of data){
             const found = films.find(film => film.id === item.film_id)
             filteredFilms.push(found)
         }
-        console.log(filteredFilms)
         setPlanetFilms(filteredFilms)
     }
 
     useEffect(() => {
-        fetchPlanet(id)
-        fetchCharacter(id)
-    })
+        fetchPlanet()
+        fetchCharacter()
+    }, [])
 
     useEffect (() => {
         if(films) {
-            fetchFilms(id)
+            fetchFilms()
         }
     }, [films])
 
     return (
         <div>
-            <h1 id="name"></h1>
+            <h1 id="name">{planet?.name}</h1>
             <section id="generalInfo">
                 <p>Climate: <span id="climate">{planet?.climate}</span></p>
                 <p>Surface Water: <span id="surface_water">{planet?.surface_water}</span></p>
